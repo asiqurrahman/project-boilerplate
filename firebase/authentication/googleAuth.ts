@@ -11,7 +11,7 @@ import {
 
 import { setDoc, doc, serverTimestamp, getDoc } from "firebase/firestore";
 
-export default async function googleSignIn() {
+export async function googleSignIn() {
   const provider = new GoogleAuthProvider();
   const userCredential = await signInWithPopup(userAuth, provider);
   const userInfo = getAdditionalUserInfo(userCredential);
@@ -37,6 +37,7 @@ export default async function googleSignIn() {
   }
 }
 
-const logOut = () => {
+export const logOut = () => {
   signOut(userAuth);
+  window.location.reload();
 };
