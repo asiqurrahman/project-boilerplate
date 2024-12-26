@@ -5,7 +5,6 @@ import { firestore } from "../init";
 import {
   signInWithPopup,
   signOut,
-  onAuthStateChanged,
   GoogleAuthProvider,
   getAdditionalUserInfo,
 } from "firebase/auth";
@@ -37,3 +36,7 @@ export default async function googleSignIn() {
     console.log(userInfo);
   }
 }
+
+const logOut = () => {
+  signOut(userAuth);
+};
