@@ -30,3 +30,15 @@ let analytics;
 if (typeof window !== "undefined") {
   analytics = getAnalytics(app);
 }
+
+if (
+  typeof window !== "undefined" &&
+  window.location.hostname === "localhost" &&
+  process.env.NODE_ENV === "development"
+) {
+  connectFirestoreEmulator(firestore, "localhost", 8080);
+  connectAuthEmulator(userAuth, "http://localhost:9099", {
+    disableWarnings: true,
+  });
+  // connectStorageEmulator(storage, "localhost", 9199);
+}
