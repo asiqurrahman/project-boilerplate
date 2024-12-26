@@ -25,6 +25,7 @@ const app = initializeApp(firebaseConfig);
 
 export const userAuth = getAuth(app);
 export const firestore = getFirestore(app);
+export const storage = getStorage(app); // Initialize storage here
 
 let analytics;
 if (typeof window !== "undefined") {
@@ -40,5 +41,5 @@ if (
   connectAuthEmulator(userAuth, "http://localhost:9099", {
     disableWarnings: true,
   });
-  // connectStorageEmulator(storage, "localhost", 9199);
+  connectStorageEmulator(storage, "localhost", 9199);
 }
